@@ -7,14 +7,13 @@ const TitleCards = ({ title, category }) => {
   const [apiData, setApiData] = useState([]);
   const cardsRef = useRef();
 
-  const options = {
+ const options = {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization: `Bearer ${import.meta.env.VITE_TMDB_TOKEN}`
+      Authorization: `Bearer ${import.meta.env.VITE_TMDB_TOKEN}` // ✅ Load token from .env
     }
   };
-
 
 
 
@@ -39,7 +38,7 @@ const TitleCards = ({ title, category }) => {
 
 
         {apiData.map((card, index) => {
-          return <Link to={`/player/${card.id}`} className="card" key={index}>
+          return<Link to={`/player/${card.id}`} className="card" key={index}>
             <img src={`https://image.tmdb.org/t/p/w500` + card.backdrop_path} alt="" />
             <p>{card.original_title}</p>
           </Link>
