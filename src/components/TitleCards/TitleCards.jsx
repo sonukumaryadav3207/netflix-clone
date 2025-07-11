@@ -11,9 +11,10 @@ const TitleCards = ({ title, category }) => {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkMmExYjk0YmJiNGEwNjJkYjhmNzhkNGNhOGNiZmQwMiIsIm5iZiI6MTc1MjEzMTkxMy43MzksInN1YiI6IjY4NmY2OTQ5MTcyYWYxNmJhMjlhNTJmNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.plRBfv94trUBB_2KPqCogjBfdrv88QYPQgtJ63C_4EQ'
+      Authorization: `Bearer ${import.meta.env.VITE_TMDB_TOKEN}`
     }
   };
+
 
 
 
@@ -38,7 +39,7 @@ const TitleCards = ({ title, category }) => {
 
 
         {apiData.map((card, index) => {
-          return<Link to={`/player/${card.id}`} className="card" key={index}>
+          return <Link to={`/player/${card.id}`} className="card" key={index}>
             <img src={`https://image.tmdb.org/t/p/w500` + card.backdrop_path} alt="" />
             <p>{card.original_title}</p>
           </Link>
